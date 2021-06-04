@@ -5,7 +5,6 @@
 	export let charities;
 	let isModalOpen = false;
 
-
 	function calculatedFunded(pledged, target) {
 		return Math.round((1 / (target / pledged)) * 100);
 	}
@@ -23,26 +22,14 @@
 		return Math.round(Math.abs(delta / oneDay));
 	}
 
-	function handleButton(){
+	function handleButton() {
 		isModalOpen = true;
 	}
 
-	function handleCloseModal(){
+	function handleCloseModal() {
 		isModalOpen = false;
 	}
 </script>
-
-<style>
-	.xs-list-with-content {
-		font-size: 12px;
-	}
-
-	.show {
-		display : block;
-		background-color: rgba(0,0,0,0.45);
-	}
-</style>
-
 
 <!-- popularCauses section -->
 <section id="popularcause" class="bg-gray waypoint-tigger xs-section-padding">
@@ -65,106 +52,106 @@
 				<div class="row">
 					<div class="col-lg-4 col-md-6">
 						{#if isModalOpen === true}
-						<Modal> 
-							<!-- modal goes here -->
-							<!-- Modal -->
-							<div
-								class="modal fade show"
-								id="exampleModal"
-								tabindex="-1"
-								role="dialog"
-								aria-labelledby="exampleModalLabel"
-							>
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h5
-												class="modal-title"
-												id="exampleModalLabel"
-											>
-												{charity.title}
-											</h5>
-											<button
-												type="button"
-												class="close"
-												data-dismiss="modal"
-												aria-label="Close"
-												on:click={handleCloseModal}
-											>
-												<span aria-hidden="true"
-													>&times;</span
+							<Modal>
+								<!-- modal goes here -->
+								<!-- Modal -->
+								<div
+									class="modal fade show"
+									id="exampleModal"
+									tabindex="-1"
+									role="dialog"
+									aria-labelledby="exampleModalLabel"
+								>
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5
+													class="modal-title"
+													id="exampleModalLabel"
 												>
-											</button>
-										</div>
-										<div class="modal-body">
-											<form>
-												<div class="form-group">
-													<label
-														for="exampleInputAmount"
-														>Amount donation</label
+													{charity.title}
+												</h5>
+												<button
+													type="button"
+													class="close"
+													data-dismiss="modal"
+													aria-label="Close"
+													on:click={handleCloseModal}
+												>
+													<span aria-hidden="true"
+														>&times;</span
 													>
-													<input
-														required
-														type="number"
-														class="form-control"
-														id="exampleInputAmount"
-														aria-describedby="amountHelp"
-														placeholder="Enter amount"
-													/>
-												</div>
-												<div class="form-group">
-													<label
-														for="exampleInputName"
-														>Your name</label
-													>
-													<input
-														required
-														type="text"
-														class="form-control"
-														id="exampleInputName"
-														aria-describedby="nameHelp"
-														placeholder="Enter full name"
-													/>
-												</div>
-												<div class="form-group">
-													<label
-														for="exampleInputEmail1"
-														>Email address</label
-													>
-													<input
-														required
-														type="email"
-														class="form-control"
-														id="exampleInputEmail1"
-														aria-describedby="emailHelp"
-														placeholder="Enter email"
-													/>
-												</div>
-												<div class="form-check">
-													<input
-														type="checkbox"
-														class="form-check-input"
-														id="exampleCheck1"
-													/>
-													<label
-														class="form-check-label"
-														for="exampleCheck1"
-														>I Agree</label
-													>
-												</div>
-											</form>
-										</div>
-										<div class="modal-footer">
-											<button
-												type="button"
-												class="btn btn-primary"
-												>Continue</button
-											>
+												</button>
+											</div>
+											<div class="modal-body">
+												<form>
+													<div class="form-group">
+														<label
+															for="exampleInputAmount"
+															>Amount donation</label
+														>
+														<input
+															required
+															type="number"
+															class="form-control"
+															id="exampleInputAmount"
+															aria-describedby="amountHelp"
+															placeholder="Enter amount"
+														/>
+													</div>
+													<div class="form-group">
+														<label
+															for="exampleInputName"
+															>Your name</label
+														>
+														<input
+															required
+															type="text"
+															class="form-control"
+															id="exampleInputName"
+															aria-describedby="nameHelp"
+															placeholder="Enter full name"
+														/>
+													</div>
+													<div class="form-group">
+														<label
+															for="exampleInputEmail1"
+															>Email address</label
+														>
+														<input
+															required
+															type="email"
+															class="form-control"
+															id="exampleInputEmail1"
+															aria-describedby="emailHelp"
+															placeholder="Enter email"
+														/>
+													</div>
+													<div class="form-check">
+														<input
+															type="checkbox"
+															class="form-check-input"
+															id="exampleCheck1"
+														/>
+														<label
+															class="form-check-label"
+															for="exampleCheck1"
+															>I Agree</label
+														>
+													</div>
+												</form>
+											</div>
+											<div class="modal-footer">
+												<button
+													type="button"
+													class="btn btn-primary"
+													>Continue</button
+												>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-						</Modal>
+							</Modal>
 						{/if}
 						<div class="xs-popular-item xs-box-shadow">
 							<div class="xs-item-header">
@@ -240,14 +227,14 @@
 
 								<span class="xs-separetor" />
 
-								<button
-									on:click={handleButton}
+								<a
+									href="/donation/{charity.id}"
 									data-toggle="modal"
 									data-target="#exampleModal"
 									class="btn btn-primary btn-block"
 								>
 									Donate This Cause
-								</button>
+								</a>
 							</div>
 							<!-- .xs-item-content END -->
 						</div>
@@ -274,3 +261,14 @@
         <h5>Data belum tersedia</h5>
     {/if}
 </div> -->
+
+<style>
+	.xs-list-with-content {
+		font-size: 12px;
+	}
+
+	.show {
+		display: block;
+		background-color: rgba(0, 0, 0, 0.45);
+	}
+</style>
